@@ -1,0 +1,2 @@
+# OpenFile waveform.wlf
+add wave -position end  waveform:/TOP/riscv_sys/mem/RAM
