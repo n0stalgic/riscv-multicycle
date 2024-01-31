@@ -67,7 +67,26 @@ _bgeu_memtest:
     add  x6, x5, 0
     sw   x4, 0(x5)
     lh   x4, 0(x5)
+    j _lui_test
+    nop
+    nop
+    nop
+_lui_test:
+    li   x2, 0xaaaabbbb
+    addi x6, x0, 1032
+    sw   x2, 0(x6)
+    lh   x3, 0(x6)
+    li   x2, 0xbbbb
+    beq  x3, x2, _auipc_test
+    nop
+    nop
+    nop
+_auipc_test:
+    auipc x3, 100
 _arithmetic_2:
+    addi x4, x0, 100
+    addi x5, x4, 100
+    j _exit
     nop
     nop
     

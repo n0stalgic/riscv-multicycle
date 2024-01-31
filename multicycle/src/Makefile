@@ -1,7 +1,4 @@
-
-
-SRCS = riscvcpu_sim.s
-
+C_SRCS   = riscvcpu_sim_c.c
 
 VERILOG_SRCS = alu.v \
 			   dff.v \
@@ -25,46 +22,43 @@ VCD_FILE          = wave.vcd
 GTKWAVE_FORMAT    = wave.gtkw
 
 ARCH = rv32i
-BASE = riscvcpu_sim
-OBJ_TARGET = $(BASE).o
-TARGET = $(BASE).bin
-MAX_TRACE_ARRAY = 4096
+C_BASE   = riscvcpu_sim_c
 
-CC = riscv32-unknown-linux-gnu-gcc
-AS = riscv32-unknown-linux-gnu-as
-OC = riscv32-unknown-linux-gnu-objcopy 
-OD = riscv32-unknown-linux-gnu-objdump
+ELF_TARGET  = $(C_BASE).elf
+BIN_TARGET  = $(C_BASE).bin
+
+MAX_TRACE_ARRAY = 16384
+
+CC = riscv32-unknown-elf-gcc
+AS = riscv32-unknown-elf-as
+OC = riscv32-unknown-elf-objcopy 
+OD = riscv32-unknown-elf-objdump
 VV = verilator
 
-VVFLAGS = -Wno-WIDTHEXPAND -Wno-MULTITOP -Wno-CASEINCOMPLETE --trace-max-array $(MAX_TRACE_ARRAY) --trace --exe --build 
-CCFLAGS = -march=$(ARCH)
+
+CCFLAGS = -march=$(ARCH) -g -ffunction-sections
 OBJFLAGS = -j .text
+VVFLAGS = -Wno-WIDTHEXPAND -Wno-MULTITOP -Wno-CASEINCOMPLETE --trace-max-array $(MAX_TRACE_ARRAY) --trace --exe --build 
 
 OCFLAGS = -O binary $(OBJFLAGS)
 DISASSEMBLER_FLAGS = no-aliases,numeric
 ODFLAGS = -d --disassembler-options=$(DISASSEMBLER_FLAGS) $(OBJFLAGS)
+LDFLAGS = -T $(C_BASE).ld -Wl,-Map=$(C_BASE).map -nostdlib
 
-OBJS = $(SRCS:.s=.o)
+C_ELFS  = $(C_SRCS:.c=.elf)
 
-%.o : %.s
-	$(CC) $(CCFLAGS) -c $< -o $@
+$(ELF_TARGET) : $(C_SRCS)
+	$(CC) -O0 $(CCFLAGS) $(LDFLAGS) $< -o $@
+	$(OC) $(OCFLAGS) $@ $(BIN_TARGET)
 
-.PHONY: compile
-compile: $(OBJS)
-
-.PHONY: binary
-binary: $(OBJS) $(OBJ_TARGET)
-
-$(OBJ_TARGET) : $(SRCS)
-	$(CC) $(CCFLAGS) -c $< -o $@
-	$(OC) $(OCFLAGS) $@ $(TARGET)
-
-.PHONY: disassemble
-disassemble: $(OBJS)
+.PHONY: disassemble_c
+disassemble_c: $(C_ELFS)
+	@echo "#------- C DISASSEMBLY -----------#"
 	$(OD) $(ODFLAGS) $<
+	@echo "#------- END C DISASSEMBLY -----------#"
 
 .PHONY: build
-build: $(OBJS) $(OBJ_TARGET) disassemble
+build: $(ELF_TARGET) disassemble_c
 
 .PHONY: verilate
 verilate: build
@@ -80,4 +74,6 @@ clean:
 	rm -rf *.bin
 	rm -rf *.out
 	rm -rf *.vcd
+	rm -rf *.map
+	rm -rf *.elf
 	rm -rf obj_dir/

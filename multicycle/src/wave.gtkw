@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
-[*] Tue Jan 30 07:01:16 2024
+[*] Wed Jan 31 04:50:55 2024
 [*]
 [dumpfile] "/home/chris/asic/riscv_cpu/multicycle/src/wave.vcd"
-[dumpfile_mtime] "Tue Jan 30 06:52:04 2024"
-[dumpfile_size] 307005
+[dumpfile_mtime] "Wed Jan 31 04:28:10 2024"
+[dumpfile_size] 12325614
 [savefile] "/home/chris/asic/riscv_cpu/multicycle/src/wave.gtkw"
-[timestart] 851
+[timestart] 324
 [size] 2474 1016
 [pos] -1 -1
-*-4.409125 920 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-4.409125 400 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] TOP.
 [treeopen] TOP.riscv_sys.
 [treeopen] TOP.riscv_sys.rvmulti.
@@ -35,16 +35,15 @@ TOP.riscv_sys.rvmulti.cntrl.PCWrite
 TOP.riscv_sys.rvmulti.Result[31:0]
 @1000200
 -System
-@800200
+@c00201
 -ALU
 @22
 TOP.riscv_sys.rvmulti.ALUControl[3:0]
 TOP.riscv_sys.rvmulti.SrcA[31:0]
 TOP.riscv_sys.rvmulti.SrcB[31:0]
 TOP.riscv_sys.rvmulti.ALU.Q[31:0]
-@29
-TOP.riscv_sys.rvmulti.ALU.blt
 @28
+TOP.riscv_sys.rvmulti.ALU.blt
 TOP.riscv_sys.rvmulti.ALU.Z
 @22
 TOP.riscv_sys.rvmulti.ALU.sum[31:0]
@@ -53,49 +52,81 @@ TOP.riscv_sys.rvmulti.ALUResult[31:0]
 @28
 TOP.riscv_sys.rvmulti.ALUSrcA[1:0]
 TOP.riscv_sys.rvmulti.ALUSrcB[1:0]
-@1000200
+@1401201
 -ALU
 @800200
--Register_File
+-Register_FIle
 @c00022
-TOP.riscv_sys.rvmulti.regfile.registers[18][31:0]
+TOP.riscv_sys.rvmulti.regfile.registers[0][31:0]
 @28
-(0)TOP.riscv_sys.rvmulti.regfile.registers[18][31:0]
-(1)TOP.riscv_sys.rvmulti.regfile.registers[18][31:0]
-(2)TOP.riscv_sys.rvmulti.regfile.registers[18][31:0]
-(3)TOP.riscv_sys.rvmulti.regfile.registers[18][31:0]
-(4)TOP.riscv_sys.rvmulti.regfile.registers[18][31:0]
-(5)TOP.riscv_sys.rvmulti.regfile.registers[18][31:0]
-(6)TOP.riscv_sys.rvmulti.regfile.registers[18][31:0]
-(7)TOP.riscv_sys.rvmulti.regfile.registers[18][31:0]
-(8)TOP.riscv_sys.rvmulti.regfile.registers[18][31:0]
-(9)TOP.riscv_sys.rvmulti.regfile.registers[18][31:0]
-(10)TOP.riscv_sys.rvmulti.regfile.registers[18][31:0]
-(11)TOP.riscv_sys.rvmulti.regfile.registers[18][31:0]
-(12)TOP.riscv_sys.rvmulti.regfile.registers[18][31:0]
-(13)TOP.riscv_sys.rvmulti.regfile.registers[18][31:0]
-(14)TOP.riscv_sys.rvmulti.regfile.registers[18][31:0]
-(15)TOP.riscv_sys.rvmulti.regfile.registers[18][31:0]
-(16)TOP.riscv_sys.rvmulti.regfile.registers[18][31:0]
-(17)TOP.riscv_sys.rvmulti.regfile.registers[18][31:0]
-(18)TOP.riscv_sys.rvmulti.regfile.registers[18][31:0]
-(19)TOP.riscv_sys.rvmulti.regfile.registers[18][31:0]
-(20)TOP.riscv_sys.rvmulti.regfile.registers[18][31:0]
-(21)TOP.riscv_sys.rvmulti.regfile.registers[18][31:0]
-(22)TOP.riscv_sys.rvmulti.regfile.registers[18][31:0]
-(23)TOP.riscv_sys.rvmulti.regfile.registers[18][31:0]
-(24)TOP.riscv_sys.rvmulti.regfile.registers[18][31:0]
-(25)TOP.riscv_sys.rvmulti.regfile.registers[18][31:0]
-(26)TOP.riscv_sys.rvmulti.regfile.registers[18][31:0]
-(27)TOP.riscv_sys.rvmulti.regfile.registers[18][31:0]
-(28)TOP.riscv_sys.rvmulti.regfile.registers[18][31:0]
-(29)TOP.riscv_sys.rvmulti.regfile.registers[18][31:0]
-(30)TOP.riscv_sys.rvmulti.regfile.registers[18][31:0]
-(31)TOP.riscv_sys.rvmulti.regfile.registers[18][31:0]
+(0)TOP.riscv_sys.rvmulti.regfile.registers[0][31:0]
+(1)TOP.riscv_sys.rvmulti.regfile.registers[0][31:0]
+(2)TOP.riscv_sys.rvmulti.regfile.registers[0][31:0]
+(3)TOP.riscv_sys.rvmulti.regfile.registers[0][31:0]
+(4)TOP.riscv_sys.rvmulti.regfile.registers[0][31:0]
+(5)TOP.riscv_sys.rvmulti.regfile.registers[0][31:0]
+(6)TOP.riscv_sys.rvmulti.regfile.registers[0][31:0]
+(7)TOP.riscv_sys.rvmulti.regfile.registers[0][31:0]
+(8)TOP.riscv_sys.rvmulti.regfile.registers[0][31:0]
+(9)TOP.riscv_sys.rvmulti.regfile.registers[0][31:0]
+(10)TOP.riscv_sys.rvmulti.regfile.registers[0][31:0]
+(11)TOP.riscv_sys.rvmulti.regfile.registers[0][31:0]
+(12)TOP.riscv_sys.rvmulti.regfile.registers[0][31:0]
+(13)TOP.riscv_sys.rvmulti.regfile.registers[0][31:0]
+(14)TOP.riscv_sys.rvmulti.regfile.registers[0][31:0]
+(15)TOP.riscv_sys.rvmulti.regfile.registers[0][31:0]
+(16)TOP.riscv_sys.rvmulti.regfile.registers[0][31:0]
+(17)TOP.riscv_sys.rvmulti.regfile.registers[0][31:0]
+(18)TOP.riscv_sys.rvmulti.regfile.registers[0][31:0]
+(19)TOP.riscv_sys.rvmulti.regfile.registers[0][31:0]
+(20)TOP.riscv_sys.rvmulti.regfile.registers[0][31:0]
+(21)TOP.riscv_sys.rvmulti.regfile.registers[0][31:0]
+(22)TOP.riscv_sys.rvmulti.regfile.registers[0][31:0]
+(23)TOP.riscv_sys.rvmulti.regfile.registers[0][31:0]
+(24)TOP.riscv_sys.rvmulti.regfile.registers[0][31:0]
+(25)TOP.riscv_sys.rvmulti.regfile.registers[0][31:0]
+(26)TOP.riscv_sys.rvmulti.regfile.registers[0][31:0]
+(27)TOP.riscv_sys.rvmulti.regfile.registers[0][31:0]
+(28)TOP.riscv_sys.rvmulti.regfile.registers[0][31:0]
+(29)TOP.riscv_sys.rvmulti.regfile.registers[0][31:0]
+(30)TOP.riscv_sys.rvmulti.regfile.registers[0][31:0]
+(31)TOP.riscv_sys.rvmulti.regfile.registers[0][31:0]
 @1401200
 -group_end
+@22
+TOP.riscv_sys.rvmulti.regfile.registers[1][31:0]
+TOP.riscv_sys.rvmulti.regfile.registers[2][31:0]
+TOP.riscv_sys.rvmulti.regfile.registers[3][31:0]
+TOP.riscv_sys.rvmulti.regfile.registers[4][31:0]
+TOP.riscv_sys.rvmulti.regfile.registers[5][31:0]
+TOP.riscv_sys.rvmulti.regfile.registers[6][31:0]
+TOP.riscv_sys.rvmulti.regfile.registers[7][31:0]
+TOP.riscv_sys.rvmulti.regfile.registers[8][31:0]
+TOP.riscv_sys.rvmulti.regfile.registers[9][31:0]
+TOP.riscv_sys.rvmulti.regfile.registers[10][31:0]
+TOP.riscv_sys.rvmulti.regfile.registers[11][31:0]
+TOP.riscv_sys.rvmulti.regfile.registers[12][31:0]
+TOP.riscv_sys.rvmulti.regfile.registers[13][31:0]
+TOP.riscv_sys.rvmulti.regfile.registers[14][31:0]
+TOP.riscv_sys.rvmulti.regfile.registers[15][31:0]
+TOP.riscv_sys.rvmulti.regfile.registers[16][31:0]
+TOP.riscv_sys.rvmulti.regfile.registers[17][31:0]
+TOP.riscv_sys.rvmulti.regfile.registers[18][31:0]
+TOP.riscv_sys.rvmulti.regfile.registers[19][31:0]
+TOP.riscv_sys.rvmulti.regfile.registers[20][31:0]
+TOP.riscv_sys.rvmulti.regfile.registers[21][31:0]
+TOP.riscv_sys.rvmulti.regfile.registers[22][31:0]
+TOP.riscv_sys.rvmulti.regfile.registers[23][31:0]
+TOP.riscv_sys.rvmulti.regfile.registers[24][31:0]
+TOP.riscv_sys.rvmulti.regfile.registers[25][31:0]
+TOP.riscv_sys.rvmulti.regfile.registers[26][31:0]
+TOP.riscv_sys.rvmulti.regfile.registers[27][31:0]
+TOP.riscv_sys.rvmulti.regfile.registers[28][31:0]
+TOP.riscv_sys.rvmulti.regfile.registers[29][31:0]
+TOP.riscv_sys.rvmulti.regfile.registers[30][31:0]
+TOP.riscv_sys.rvmulti.regfile.registers[31][31:0]
 @1000200
--Register_File
+-Register_FIle
 @800200
 -Controller
 @22
@@ -115,5 +146,14 @@ TOP.riscv_sys.rvmulti.instr_reg.D1[31:0]
 TOP.riscv_sys.rvmulti.instr_reg.Q1[31:0]
 @1000200
 -PC
+@800200
+-RAM
+@22
+TOP.riscv_sys.mem.RAM[492][7:0]
+TOP.riscv_sys.mem.RAM[493][7:0]
+TOP.riscv_sys.mem.RAM[494][7:0]
+TOP.riscv_sys.mem.RAM[495][7:0]
+@1000200
+-RAM
 [pattern_trace] 1
 [pattern_trace] 0

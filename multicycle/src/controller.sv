@@ -6,7 +6,7 @@ module controller(input  logic       clk,
                   input  logic       funct7b5,
                   input  logic       Zero,
 
-                  output logic [1:0] ImmSrc,
+                  output logic [2:0] ImmSrc,
                   output logic [1:0] ALUSrcA, ALUSrcB,
                   output logic [1:0] ResultSrc, 
                   output logic       AdrSrc,
@@ -29,6 +29,8 @@ localparam EXECUTE_I  = 8;
 localparam JAL        = 9;
 localparam JALR       = 10;
 localparam BRANCH     = 11;
+localparam LUI        = 12;
+localparam AUIPC      = 13;
 
 `include "opcode.vh"
 
@@ -81,6 +83,10 @@ begin
         next_state = JAL;
       else if (op == `BRANCH_OP)
         next_state = BRANCH;
+      else if (op == `LUI_OP)
+        next_state = LUI;
+      else if (op == `AUIPC_OP)
+        next_state = AUIPC;
     end
     MEM_ADR: begin
       if (op == `LW_OP)
@@ -102,9 +108,10 @@ begin
       else
         next_state = ALU_WB;
     EXECUTE_R,
-    JAL:
-      next_state = ALU_WB;
-    JALR:
+    JAL,
+    JALR,
+    LUI,
+    AUIPC:
       next_state = ALU_WB;
 
   endcase
@@ -194,7 +201,19 @@ begin
       ALUSrcB = 2'b00;
       ALUOp = 2'b01;
       ResultSrc = 2'b00;
-      Branch = 1'b1;             
+      Branch = 1'b1;
+    end
+    LUI: begin
+      ALUSrcA = 2'b11;  // zero
+      ALUSrcB = 2'b01;  // (imm << 12)
+      ALUOp   = 2'b00;  // add
+      ResultSrc = 2'b00; // rd = imm << 12
+    end 
+    AUIPC: begin
+      ALUSrcA = 2'b01; // PC
+      ALUSrcB = 2'b01; // (imm << 12)
+      ALUOp   = 2'b00; // add
+      ResultSrc = 2'b00; // rd = PC + (imm << 12)
     end
   endcase
 end

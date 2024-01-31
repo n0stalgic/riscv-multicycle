@@ -5,3 +5,5 @@
 `define BRANCH_OP     7'b1100011
 `define JAL_OP        7'b1101111
 `define JALR_OP       7'b1100111
+`define LUI_OP        7'b0110111
+`define AUIPC_OP     7'b0010111
