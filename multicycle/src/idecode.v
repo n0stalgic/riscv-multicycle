@@ -7,7 +7,7 @@ module idecode(
 );
 
 input  [6:0] op;
-output reg [1:0] ImmSrc;
+output reg [2:0] ImmSrc;
 
 `include "opcode.vh"
 
@@ -16,13 +16,15 @@ always @ (*)
 begin
 
   case(op)
-    `LW_OP:           ImmSrc = 2'b00;
-    `SW_OP:           ImmSrc = 2'b01;
-    `I_TYPE_ALU_OP:   ImmSrc = 2'b00;
-    `R_TYPE_OP:       ImmSrc = 2'b00;
-    `BRANCH_OP:       ImmSrc = 2'b10;
-    `JAL_OP:          ImmSrc = 2'b11;
-    `JALR_OP:         ImmSrc = 2'b00;
+    `LW_OP:           ImmSrc = 3'b000;
+    `SW_OP:           ImmSrc = 3'b001;
+    `I_TYPE_ALU_OP:   ImmSrc = 3'b000;
+    `R_TYPE_OP:       ImmSrc = 3'b000;
+    `BRANCH_OP:       ImmSrc = 3'b010;
+    `JAL_OP:          ImmSrc = 3'b011;
+    `JALR_OP:         ImmSrc = 3'b000;
+    `LUI_OP,
+    `AUIPC_OP:        ImmSrc = 3'b100;
   endcase
 end
 

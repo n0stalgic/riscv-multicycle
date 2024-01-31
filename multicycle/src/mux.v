@@ -29,7 +29,7 @@ module mux_3_1 (
             2'b00: dout = in1; 
             2'b01: dout = in2;
             2'b10: dout = in3;
-            2'b11: dout = 2'bxx;
+            2'b11: dout = 2'b00;
         endcase
 
 endmodule

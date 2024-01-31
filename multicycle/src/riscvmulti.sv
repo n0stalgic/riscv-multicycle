@@ -17,7 +17,7 @@ module riscvmulti(input  logic        clk, reset,
   wire [31:0] PC;
   wire [31:0] instr;
   wire Zero;
-  wire [1:0] ImmSrc;
+  wire [2:0] ImmSrc;
   wire [1:0] ALUSrcA;
   wire [1:0] ALUSrcB;
   wire [1:0] ResultSrc;
@@ -40,7 +40,7 @@ module riscvmulti(input  logic        clk, reset,
   wire [31:0] ImmExt;
 
   /*verilator public_off*/
-
+  
   controller cntrl(
     .clk(clk),
     .reset(reset),

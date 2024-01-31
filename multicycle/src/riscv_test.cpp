@@ -1,10 +1,9 @@
 #include <cstdlib>
+#include <stdio.h>
 #include <stdlib.h>
 #include "verilated.h"
 #include "obj_dir/Vriscv_sys.h"
 #include "testbench.h"
-
-#define PC_MAX 0x44
 
 int main(int argc, char** argv)
 {
